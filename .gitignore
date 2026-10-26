@@ -1,0 +1,37 @@
+# .gitignore de la vitrine publique (fourni avec la vitrine)
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Donnees locales : ce que l'oeil a vu reste sur la machine
+data/sessions/
+data/journaux/
+data/events/
+preuves/
+captures/
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.bmp
+
+# Golden : seulement la structure et le mode d'emploi
+golden/*
+!golden/README.md
+!golden/ocr-samples/
+golden/ocr-samples/*
+!golden/ocr-samples/.gitkeep
+
+# Modeles telecharges
+models/
+
+*.log

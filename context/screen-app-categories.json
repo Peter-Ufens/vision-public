@@ -1,0 +1,67 @@
+{
+  "_doc": [
+    "Table de correspondance executable -> categorie d'application (R-S1b, S1b.3).",
+    "Cle = nom de l'executable en minuscules. Le nom d'executable est stable ;",
+    "le titre de fenetre ne l'est pas (il change avec la langue, la version et",
+    "le contenu affiche). On ne mappe donc JAMAIS sur le titre.",
+    "",
+    "Champ 'document' : ou trouver l'identite du contenu affiche.",
+    "  'url'   = barre d'adresse lisible par UIA (navigateurs Chromium).",
+    "            Declenche expect_browser=True cote screen_uia.",
+    "  'title' = seul le titre de fenetre renseigne, confiance faible.",
+    "  null    = l'application n'a pas de notion de document. Ce n'est PAS une",
+    "            incertitude : c'est une certitude qu'il n'y a rien a lire.",
+    "            La distinction est ce qui evite de confondre 'je ne sais pas'",
+    "            et 'il n'y a rien a savoir'.",
+    "",
+    "Ajouter une entree ne demande aucun changement de code.",
+    "Executable inconnu -> categorie 'unknown', document 'title'."
+  ],
+
+  "apps": {
+    "msedge.exe":          {"category": "browser",  "label": "Microsoft Edge",     "document": "url"},
+    "chrome.exe":          {"category": "browser",  "label": "Google Chrome",      "document": "url"},
+    "brave.exe":           {"category": "browser",  "label": "Brave",              "document": "url"},
+    "vivaldi.exe":         {"category": "browser",  "label": "Vivaldi",            "document": "url"},
+    "opera.exe":           {"category": "browser",  "label": "Opera",              "document": "url"},
+    "firefox.exe":         {"category": "browser",  "label": "Mozilla Firefox",    "document": "url", "note": "moteur Gecko, lecture d'URL NON testee au 31/08 : s'abstiendra si l'omnibox n'est pas exposee"},
+
+    "olk.exe":             {"category": "mail",     "label": "Outlook",            "document": "title"},
+    "outlook.exe":         {"category": "mail",     "label": "Outlook classique",  "document": "title"},
+    "thunderbird.exe":     {"category": "mail",     "label": "Thunderbird",        "document": "title"},
+
+    "code.exe":            {"category": "editor",   "label": "VS Code",            "document": "title"},
+    "cursor.exe":          {"category": "editor",   "label": "Cursor",             "document": "title"},
+    "notepad.exe":         {"category": "editor",   "label": "Bloc-notes",         "document": "title"},
+    "notepad++.exe":       {"category": "editor",   "label": "Notepad++",          "document": "title"},
+    "devenv.exe":          {"category": "editor",   "label": "Visual Studio",      "document": "title"},
+
+    "windowsterminal.exe": {"category": "terminal", "label": "Windows Terminal",   "document": null},
+    "powershell.exe":      {"category": "terminal", "label": "PowerShell",         "document": null},
+    "pwsh.exe":            {"category": "terminal", "label": "PowerShell 7",       "document": null},
+    "cmd.exe":             {"category": "terminal", "label": "Invite de commandes","document": null},
+    "conhost.exe":         {"category": "terminal", "label": "Console Windows",    "document": null},
+
+    "winword.exe":         {"category": "office",   "label": "Word",               "document": "title"},
+    "excel.exe":           {"category": "office",   "label": "Excel",              "document": "title"},
+    "powerpnt.exe":        {"category": "office",   "label": "PowerPoint",         "document": "title"},
+    "acrord32.exe":        {"category": "pdf",      "label": "Acrobat Reader",     "document": "title"},
+    "sumatrapdf.exe":      {"category": "pdf",      "label": "SumatraPDF",         "document": "title"},
+
+    "explorer.exe":        {"category": "files",    "label": "Explorateur",        "document": "title"},
+    "systemsettings.exe":  {"category": "settings", "label": "Parametres Windows", "document": "title"},
+
+    "teams.exe":           {"category": "chat",     "label": "Microsoft Teams",    "document": "title"},
+    "ms-teams.exe":        {"category": "chat",     "label": "Microsoft Teams",    "document": "title"},
+    "discord.exe":         {"category": "chat",     "label": "Discord",            "document": "title"},
+    "slack.exe":           {"category": "chat",     "label": "Slack",              "document": "title"},
+
+    "vlc.exe":             {"category": "media",    "label": "VLC",                "document": "title"},
+    "spotify.exe":         {"category": "media",    "label": "Spotify",            "document": "title"},
+
+    "claude.exe":          {"category": "agent",    "label": "Claude",             "document": "title"},
+    "ollama.exe":          {"category": "agent",    "label": "Ollama",             "document": null}
+  },
+
+  "fallback": {"category": "unknown", "label": null, "document": "title"}
+}

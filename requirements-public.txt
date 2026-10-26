@@ -1,0 +1,14 @@
+# Dependances de vision-public (versions relevees le 2026-10-18 sur le poste de reference).
+# Installation : python -m pip install -r requirements-public.txt
+opencv-python==4.12.0.88
+numpy==2.2.6
+pytesseract==0.3.13
+Pillow==11.0.0
+mss==10.2.0
+pyzmq==26.4.0
+psutil==7.1.0
+# Windows seulement : fenetres, processus, accessibilite (UI Automation)
+pywin32==311; sys_platform == "win32"
+comtypes>=1.4,<2; sys_platform == "win32"
+# OCR du HUD et de la veille (le code s'en passe s'il manque). Pas encore de version pour Python 3.13.
+rapidocr_onnxruntime==1.4.4; python_version < "3.13"
