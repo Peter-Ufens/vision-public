@@ -56,16 +56,39 @@ Optionnel, non installé par `requirements-public.txt` : Ollama, Moondream ou CL
 | Linux, session Wayland | **pas encore pris en charge** (capture par le portail système à faire) : choisir une session « Xorg » à l’écran de connexion |
 | macOS | non testé |
 
+Sous Linux X11, 5 smokes sortent en échec parce qu’ils contrôlent des fonctions Windows (fenêtres, curseur, UI Automation) : `smoke_grille`, `smoke_instant_screen`, `smoke_screen_api`, `smoke_screen_context`, `smoke_ui_inventory`. Les autres smokes doivent sortir en 0.
+
 ## Démarrage rapide
 
-```text
+Avec le **Python du venv** créé plus haut (pas un `python` global sans paquets) :
+
+Windows (PowerShell) :
+
+```powershell
+.\.venv\Scripts\python.exe scripts\smoke_lire_cases.py
+.\.venv\Scripts\python.exe scripts\lire_cases.py 1:A1 --avec-texte
+.\.venv\Scripts\python.exe scripts\instant_screen.py --depth standard
+.\.venv\Scripts\python.exe scripts\veille_active.py --duree 30
+```
+
+Linux (venv activé) :
+
+```bash
 python scripts/smoke_lire_cases.py
 python scripts/lire_cases.py 1:A1 --avec-texte
 python scripts/instant_screen.py --depth standard
 python scripts/veille_active.py --duree 30
 ```
 
-Tout est en **lecture seule** : aucun clic, aucune touche, aucune image gardée par défaut.
+Tout est en **lecture seule** : aucun clic, aucune touche, aucune image gardée par défaut. La veille écrit hors dépôt (dossier temporaire), jamais dans le git.
+
+## Documentation
+
+- [`docs/lire-cases-usage.md`](docs/lire-cases-usage.md) : ce que veut dire `1:A1`
+- [`docs/session-ecran-usage.md`](docs/session-ecran-usage.md) : session bornée
+- [`docs/oeil-trames-et-computer-use.md`](docs/oeil-trames-et-computer-use.md) : trames vs Computer Use
+- [`ADR/ADR-0007-oeil-seul-actuation-mains-zap-2-3.md`](ADR/ADR-0007-oeil-seul-actuation-mains-zap-2-3.md) : l’œil ne clique pas
+- Journal du labo : https://github.com/Peter-Ufens/AI-Lab-Journal (fiche vision-public dans projects-released)
 
 ## Licence
 
@@ -89,6 +112,7 @@ Tout est en **lecture seule** : aucun clic, aucune touche, aucune image gardée 
 | **comtypes** (Windows) | accessibilité (UI Automation) | MIT |
 | **RapidOCR** (`rapidocr_onnxruntime`, optionnel) | OCR du HUD et de la veille | Apache-2.0 |
 | **ONNX Runtime** (tiré par RapidOCR) | moteur des modèles OCR | MIT |
+| Autres paquets tirés par RapidOCR (flatbuffers, protobuf, pyclipper, shapely, PyYAML, six, tqdm, packaging…) | dépendances indirectes | licences permissives (MIT, BSD, Apache) : à vérifier au tip des paquets |
 | **Pillow** | images | MIT-CMU (licence Pillow, déclarée par le paquet installé) |
 | **CLIP** (via dépendances HF) | similarité visuelle optionnelle | selon paquet (souvent MIT) |
 | **Moondream 3 (preview)** | description d’écran optionnelle | Business Source License 1.1 + Additional Use Grant (fiche du modèle) : usage perso et recherche libres ; lire les conditions avant tout service tiers |

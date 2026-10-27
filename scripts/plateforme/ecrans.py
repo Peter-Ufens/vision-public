@@ -2,7 +2,7 @@
 
 Windows : ``screen_context`` (primaire d'abord, puis gauche). Inchange.
 X11 : mss via ``screen_capture`` (ordre mss, pas encore le tri Windows).
-Wayland : pas branche. Prev u : xdg-desktop-portal, pas un grab silencieux.
+Wayland : pas branche. Prévu : xdg-desktop-portal, pas un grab silencieux.
 """
 from __future__ import annotations
 
